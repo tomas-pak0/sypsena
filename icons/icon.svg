@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Šypsena</title>
+  <rect width="512" height="512" rx="112" fill="#0b0b0d"/>
+  <circle cx="256" cy="256" r="184" fill="#ed3948"/>
+  <path fill="#fff" d="M170 151c26-19 56-12 86 0 30-12 60-19 86 0 38 28 34 92 18 139-18 54-47 114-78 91-13-10-8-61-26-61s-13 51-26 61c-31 23-60-37-78-91-16-47-20-111 18-139Z"/>
+  <path fill="#0b0b0d" d="M190 224c38 28 94 28 132 0 8-6 19 4 13 13-17 29-47 47-79 47s-62-18-79-47c-6-9 5-19 13-13Z"/>
+</svg>

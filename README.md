@@ -12,13 +12,25 @@
 - CSV eksportas į „Excel“ arba „Google Sheets“;
 - JSON atsarginės kopijos sukūrimas ir atkūrimas;
 - duomenų saugojimas įrenginio naršyklėje;
+- diegimas telefone kaip PWA programėlės;
+- veikimas be interneto;
 - mobiliesiems pritaikytas juodos, baltos ir raudonos spalvų dizainas.
 
 ## Paleidimas
 
-Programėlei nereikia serverio ar papildomų paketų. Atidarykite `index.html` naršyklėje.
+PWA funkcijoms reikalingas HTTPS adresas arba vietinis kūrimo serveris. Paprasčiausias vietinis paleidimas:
+
+```bash
+python3 -m http.server 8000
+```
+
+Tada naršyklėje atidarykite `http://localhost:8000`.
 
 Paskelbus projektą su „GitHub Pages“, programėlę galima naudoti tiesiogiai telefone per jos interneto adresą.
+
+## Įdiegimas telefone
+
+Atidarykite programėlės HTTPS adresą „Chrome“ naršyklėje ir pasirinkite programėlės diegimo pasiūlymą. Įdiegta „Šypsena“ atsidaro atskirame lange ir pagrindinės funkcijos veikia be interneto.
 
 ## Duomenų saugojimas
 
@@ -33,6 +45,8 @@ Valymų istorija saugoma naršyklės `localStorage` atmintyje. Išvalius naršyk
 - HTML5
 - CSS3
 - JavaScript
+- Web App Manifest
+- Service Worker
 
 ## Autorius
 
