@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0d">
+  <title>Šypsena — dantų valymo laikmatis</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#f7f7f7;background:#0b0b0d;color-scheme:dark}
+    *{box-sizing:border-box}body{margin:0;min-height:100svh;background:radial-gradient(circle at 50% 0,#252528,#0b0b0d 58%);}
+    main{max-width:540px;margin:auto;padding:28px 20px 42px}.eyebrow{font-size:.76rem;letter-spacing:.19em;text-transform:uppercase;color:#f0525e;font-weight:800}h1{font-size:clamp(2.4rem,9vw,3.5rem);line-height:1;margin:8px 0 12px;letter-spacing:-.055em}h2{font-size:1.1rem;margin:0 0 15px}p{line-height:1.5}.lead{color:#bcbcc1;margin:0 0 26px}.card{background:#19191c;border:1px solid #3b3b40;border-radius:24px;padding:22px;margin:18px 0;box-shadow:0 14px 40px #00000055}
+    .topline{display:flex;justify-content:space-between;gap:12px;align-items:center}.pill{background:#422126;color:#ffc5c9;border-radius:100px;padding:7px 12px;font-size:.8rem;font-weight:700}.muted{color:#b6b6bd}.timer{width:min(70vw,276px);aspect-ratio:1;border-radius:50%;margin:24px auto 12px;display:grid;place-items:center;background:conic-gradient(#ed3948 var(--progress,0%),#38383e 0);position:relative}.timer:before{content:"";position:absolute;inset:12px;background:#19191c;border-radius:50%}.timer-content{position:relative;text-align:center}.digits{font-size:4.2rem;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.06em}.timer-label{color:#e2e2e5;font-size:.84rem}.phase{text-align:center;font-size:1.13rem;font-weight:750;min-height:30px;margin:10px 0 4px}.hint{text-align:center;color:#bcbcc1;font-size:.88rem;min-height:39px;margin:0 0 12px}.actions{display:flex;gap:10px}.actions button{flex:1}button{border:0;border-radius:14px;padding:15px 16px;font:inherit;font-weight:750;cursor:pointer;min-height:50px}button:focus-visible{outline:3px solid #ffffff;outline-offset:3px}.primary{background:#ed3948;color:#ffffff}.secondary{background:#333338;color:#f7f7f7}.danger{background:transparent;color:#ffb5bc;border:1px solid #a94b55}.hidden{display:none!important}.slots{display:grid;grid-template-columns:1fr 1fr;gap:10px}.slot{background:#26262a;border:1px solid #44444a;border-radius:18px;padding:15px}.slot strong{display:block;margin:3px 0}.status{font-size:.83rem;color:#b6b6bd}.status.done{color:#ff8c96}.week{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.day{text-align:center;background:#26262a;border-radius:12px;padding:8px 2px;font-size:.75rem;color:#c4c4ca}.day b{display:block;font-size:1.1rem;margin:5px 0;color:#ffffff}.day.today{outline:1px solid #ed3948}.caption{font-size:.8rem;color:#b6b6bd;margin:14px 0 0}.footer{font-size:.82rem;color:#b4b4bb}.footer a{color:#ff8791}.live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}.stat{background:#26262a;border:1px solid #44444a;border-radius:18px;padding:15px}.stat b{display:block;font-size:1.65rem;line-height:1.1;margin-bottom:4px}.stat span{color:#b6b6bd;font-size:.78rem}.field{width:100%;min-height:48px;border:1px solid #4a4a50;border-radius:14px;background:#26262a;color:#fff;padding:0 14px;font:inherit;color-scheme:dark}.table-wrap{overflow:auto;margin-top:14px;border:1px solid #3b3b40;border-radius:14px}table{width:100%;border-collapse:collapse;min-width:410px;font-size:.83rem}th,td{padding:11px 12px;text-align:left;border-bottom:1px solid #34343a}th{color:#b6b6bd;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}tr:last-child td{border-bottom:0}.mark{color:#ff7b86;font-weight:800}.empty{text-align:center;color:#b6b6bd;padding:22px}.stack{display:grid;gap:10px}.file-input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+    @media(max-width:365px){.digits{font-size:3.4rem}.card{padding:17px}}
+    @media(prefers-reduced-motion:no-preference){button{transition:transform .15s,filter .15s}button:active{transform:scale(.97)}button:hover{filter:brightness(1.08)}}
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Kasdienė rutina</div>
+  <h1>Šypsena<span style="color:#ed3948">.</span></h1>
+  <p class="lead">Dvi minutės sau. Ryte ir vakare.</p>
+  <section class="card" aria-label="Valymo laikmatis">
+    <div class="topline"><span class="muted">Dantų valymas</span><span class="pill">2:00 · 4 etapai</span></div>
+    <div class="timer" id="ring"><div class="timer-content"><div class="digits" id="clock">02:00</div><div class="timer-label" id="counter">Pasiruošk valyti</div></div></div>
+    <div class="phase" id="phase">Pradėkime?</div>
+    <p class="hint" id="hint">Kas 30 sekundžių pereik prie kitos burnos dalies.</p>
+    <div class="actions"><button class="primary" id="start">Pradėti</button><button class="secondary hidden" id="pause">Pauzė</button><button class="danger hidden" id="reset">Iš naujo</button></div>
+    <div class="live" role="status" aria-live="polite" id="announce"></div>
+  </section>
+  <section class="card" aria-label="Šiandienos įrašai">
+    <h2>Šiandien</h2><div class="slots"><div class="slot">☀️ <strong>Rytas</strong><span class="status" id="morning">Dar nepažymėta</span></div><div class="slot">🌙 <strong>Vakaras</strong><span class="status" id="evening">Dar nepažymėta</span></div></div>
+    <p class="caption">Baigus laikmatį, pasirinksi, kurį valymą įrašyti. Praleistą valymą gali pažymėti ir ranka.</p>
+    <div class="actions" style="margin-top:15px"><button class="secondary" id="addMorning">+ Rytas</button><button class="secondary" id="addEvening">+ Vakaras</button></div>
+    <div id="completion" class="hidden" style="margin-top:15px"><p id="completionText" style="margin:0 0 10px">Puiku! Kurį valymą įrašyti?</p><div class="actions"><button class="primary" id="saveMorning">Rytas</button><button class="primary" id="saveEvening">Vakaras</button></div></div>
+  </section>
+  <section class="card" aria-label="Pastarosios septynios dienos"><h2>Pastarosios 7 dienos</h2><div class="week" id="week"></div><p class="caption">Kiekvienos dienos žymos: 0, 1 arba 2 valymai.</p></section>
+  <section class="card" aria-label="Mėnesio ataskaita">
+    <div class="topline"><h2 style="margin:0">Mėnesio ataskaita</h2><span class="pill" id="reportPercent">0 %</span></div>
+    <label for="reportMonth" class="caption" style="display:block;margin:16px 0 7px">Pasirink mėnesį</label>
+    <input class="field" type="month" id="reportMonth">
+    <div class="stats">
+      <div class="stat"><b id="reportCleanings">0</b><span>valymų</span></div>
+      <div class="stat"><b id="reportPerfectDays">0</b><span>pilnų dienų</span></div>
+      <div class="stat"><b id="reportStreak">0</b><span>dienų serija</span></div>
+      <div class="stat"><b id="reportMissed">0</b><span>trūkstamų valymų</span></div>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>Data</th><th>Rytas</th><th>Vakaras</th><th>Iš viso</th></tr></thead><tbody id="reportRows"></tbody></table></div>
+  </section>
+  <section class="card" aria-label="Duomenų eksportas ir atkūrimas">
+    <h2>Duomenys</h2>
+    <p class="caption" style="margin-top:0">CSV tinka ataskaitai „Excel“, o JSON – visai atsarginei programėlės kopijai.</p>
+    <div class="stack" style="margin-top:15px">
+      <button class="primary" id="exportCsv">Eksportuoti mėnesį į CSV</button>
+      <button class="secondary" id="exportJson">Atsisiųsti atsarginę kopiją</button>
+      <label class="secondary" for="importJson" style="display:grid;place-items:center;border-radius:14px;min-height:50px;font-weight:750;cursor:pointer">Atkurti iš JSON failo</label>
+      <input class="file-input" type="file" id="importJson" accept="application/json,.json">
+    </div>
+  </section>
+  <p class="footer">Duomenys saugomi tik šioje naršyklėje; išvalius naršyklės duomenis, įrašai dings. Rekomenduojama valyti dantis fluorido turinčia pasta apie 2 minutes du kartus per dieną. <a href="https://www.nhs.uk/live-well/healthy-teeth-and-gums/how-to-keep-your-teeth-clean/" target="_blank" rel="noopener noreferrer">NHS gairės</a>.</p>
+</main>
+<script>
+(() => {
+  'use strict';
+  const DURATION=120, STEP=30, STORAGE='sypsena-brushing-v1';
+  const stages=['Viršutiniai dantys · dešinė','Viršutiniai dantys · kairė','Apatiniai dantys · kairė','Apatiniai dantys · dešinė'];
+  const $=id=>document.getElementById(id);
+  let records=load(), remaining=DURATION, mode='idle', endAt=0, ticker=null, audio=null;
+  function localDate(date=new Date()){return [date.getFullYear(),String(date.getMonth()+1).padStart(2,'0'),String(date.getDate()).padStart(2,'0')].join('-')}
+  function validRecords(value){return value&&typeof value==='object'&&!Array.isArray(value)&&Object.entries(value).every(([date,day])=>/^\d{4}-\d{2}-\d{2}$/.test(date)&&day&&typeof day==='object'&&!Array.isArray(day))}
+  function load(){try{const value=JSON.parse(localStorage.getItem(STORAGE));return validRecords(value)?value:{}}catch{return {}}}
+  function persist(){try{localStorage.setItem(STORAGE,JSON.stringify(records))}catch{ $('announce').textContent='Nepavyko išsaugoti įrašo šiame įrenginyje.' }}
+  function playSignal(){try{audio ||= new (window.AudioContext||window.webkitAudioContext)(); if(audio.state==='suspended')audio.resume();const osc=audio.createOscillator(),gain=audio.createGain();osc.type='sine';osc.frequency.value=740;gain.gain.setValueAtTime(.10,audio.currentTime);gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.18);osc.connect(gain).connect(audio.destination);osc.start();osc.stop(audio.currentTime+.19)}catch{}try{navigator.vibrate?.(100)}catch{}}
+  function renderTimer(){const elapsed=DURATION-remaining; $('clock').textContent=`${String(Math.floor(remaining/60)).padStart(2,'0')}:${String(remaining%60).padStart(2,'0')}`;$('ring').style.setProperty('--progress',`${(elapsed/DURATION)*100}%`);
+    if(mode==='complete'){$('phase').textContent='Valymas baigtas!';$('counter').textContent='Puikiai padirbėta';$('hint').textContent='Pasirink valymą ir išsaugok įrašą.'}
+    else if(mode==='idle'){$('phase').textContent='Pradėkime?';$('counter').textContent='Pasiruošk valyti';$('hint').textContent='Kas 30 sekundžių pereik prie kitos burnos dalies.'}
+    else{const index=Math.min(3,Math.floor(elapsed/STEP));$('phase').textContent=stages[index];$('counter').textContent=`${index+1} / 4 etapas`;$('hint').textContent=mode==='paused'?'Laikmatis sustabdytas.':'Švelniai valyk visas dantų puses.'}
+    $('start').classList.toggle('hidden',mode==='running'||mode==='complete');$('start').textContent=mode==='paused'?'Tęsti':'Pradėti';$('pause').classList.toggle('hidden',mode!=='running');$('reset').classList.toggle('hidden',mode==='idle');$('completion').classList.toggle('hidden',mode!=='complete');}
+  function stopTicker(){if(ticker){clearInterval(ticker);ticker=null}}
+  function tick(){const oldRemaining=remaining;remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));if(remaining===0){stopTicker();mode='complete';playSignal();$('announce').textContent='Dvi minutės baigėsi. Pasirinkite rytą arba vakarą.'}else if(Math.floor((DURATION-remaining)/STEP)>Math.floor((DURATION-oldRemaining)/STEP)){playSignal();$('announce').textContent=stages[Math.min(3,Math.floor((DURATION-remaining)/STEP))]}renderTimer()}
+  function start(){if(mode==='idle')remaining=DURATION;mode='running';endAt=Date.now()+remaining*1000;playSignal();tick();ticker=setInterval(tick,250)}
+  function reset(){stopTicker();remaining=DURATION;mode='idle';renderTimer();$('announce').textContent='Laikmatis nustatytas iš naujo.'}
+  function record(slot,manual=false){const date=localDate();records[date] ||= {};records[date][slot]=new Date().toISOString();persist();renderRecords();$('announce').textContent=`${slot==='morning'?'Ryto':'Vakaro'} valymas įrašytas.`;if(!manual)reset()}
+  function renderRecords(){const today=records[localDate()]||{};for(const [slot,id] of [['morning','morning'],['evening','evening']]){const el=$(id),value=today[slot];el.textContent=value?`Pažymėta ${new Date(value).toLocaleTimeString('lt-LT',{hour:'2-digit',minute:'2-digit'})}`:'Dar nepažymėta';el.classList.toggle('done',!!value)}const week=$('week');week.replaceChildren();for(let offset=6;offset>=0;offset--){const date=new Date();date.setHours(12,0,0,0);date.setDate(date.getDate()-offset);const data=records[localDate(date)]||{},count=Number(!!data.morning)+Number(!!data.evening),cell=document.createElement('div');cell.className='day'+(offset===0?' today':'');const day=document.createElement('span');day.textContent=new Intl.DateTimeFormat('lt-LT',{weekday:'short'}).format(date);const amount=document.createElement('b');amount.textContent=count===2?'✓✓':String(count);cell.append(day,amount);cell.setAttribute('aria-label',`${localDate(date)}: ${count} valymai`);week.append(cell)}renderReport()}
+  function daysInMonth(month){const [year,index]=month.split('-').map(Number);return new Date(year,index,0).getDate()}
+  function reportDayLimit(month){const today=localDate(),current=today.slice(0,7);if(month<current)return daysInMonth(month);if(month===current)return Number(today.slice(8,10));return 0}
+  function timeLabel(value){return value?new Date(value).toLocaleTimeString('lt-LT',{hour:'2-digit',minute:'2-digit'}):'—'}
+  function monthEntries(month){return Object.entries(records).filter(([date])=>date.startsWith(month)).sort(([a],[b])=>a.localeCompare(b))}
+  function currentStreak(month){const limit=reportDayLimit(month);let streak=0;for(let day=limit;day>=1;day--){const key=`${month}-${String(day).padStart(2,'0')}`,value=records[key]||{};if(value.morning&&value.evening)streak++;else break}return streak}
+  function renderReport(){const month=$('reportMonth').value||localDate().slice(0,7),limit=reportDayLimit(month),entries=monthEntries(month),cleanings=entries.reduce((sum,[,day])=>sum+Number(!!day.morning)+Number(!!day.evening),0),perfect=entries.filter(([,day])=>day.morning&&day.evening).length,expected=limit*2,percent=expected?Math.round(cleanings/expected*100):0;$('reportCleanings').textContent=cleanings;$('reportPerfectDays').textContent=perfect;$('reportStreak').textContent=currentStreak(month);$('reportMissed').textContent=Math.max(0,expected-cleanings);$('reportPercent').textContent=`${percent} %`;const body=$('reportRows');body.replaceChildren();if(!entries.length){const row=document.createElement('tr'),cell=document.createElement('td');cell.colSpan=4;cell.className='empty';cell.textContent='Šį mėnesį įrašų dar nėra.';row.append(cell);body.append(row);return}for(const [date,day] of entries){const row=document.createElement('tr'),count=Number(!!day.morning)+Number(!!day.evening);for(const value of [date,timeLabel(day.morning),timeLabel(day.evening),String(count)]){const cell=document.createElement('td');cell.textContent=value;if(value!=='—'&&value!=='0')cell.classList.add('mark');row.append(cell)}body.append(row)}}
+  function download(name,type,content){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=name;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+  function exportCsv(){const month=$('reportMonth').value,rows=[['Data','Rytas','Vakaras','Valymų skaičius']];for(const [date,day] of monthEntries(month))rows.push([date,timeLabel(day.morning),timeLabel(day.evening),Number(!!day.morning)+Number(!!day.evening)]);const csv='\ufeff'+rows.map(row=>row.map(value=>`"${String(value).replaceAll('"','""')}"`).join(';')).join('\r\n');download(`sypsena-${month}.csv`,'text/csv;charset=utf-8',csv);$('announce').textContent='Mėnesio CSV ataskaita paruošta.'}
+  function exportJson(){const backup={app:'Šypsena',version:1,exportedAt:new Date().toISOString(),records};download(`sypsena-atsargine-kopija-${localDate()}.json`,'application/json',JSON.stringify(backup,null,2));$('announce').textContent='Atsarginė kopija paruošta.'}
+  async function importJson(file){try{const parsed=JSON.parse(await file.text()),incoming=parsed&&parsed.records;if(!validRecords(incoming))throw new Error('invalid');if(!confirm('Atkurti duomenis iš šio failo? Dabartiniai įrašai bus pakeisti.'))return;records=incoming;persist();renderRecords();$('announce').textContent='Duomenys sėkmingai atkurti.'}catch{$('announce').textContent='Šis failas nėra tinkama „Šypsenos“ atsarginė kopija.'}finally{$('importJson').value=''}}
+  $('start').addEventListener('click',start);$('pause').addEventListener('click',()=>{tick();if(mode!=='running')return;stopTicker();mode='paused';renderTimer()});$('reset').addEventListener('click',reset);
+  for(const slot of ['Morning','Evening']){$(`add${slot}`).addEventListener('click',()=>record(slot.toLowerCase(),true));$(`save${slot}`).addEventListener('click',()=>record(slot.toLowerCase()))}
+  $('reportMonth').value=localDate().slice(0,7);$('reportMonth').addEventListener('change',renderReport);$('exportCsv').addEventListener('click',exportCsv);$('exportJson').addEventListener('click',exportJson);$('importJson').addEventListener('change',event=>{const [file]=event.target.files;if(file)importJson(file)});
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&mode==='running')tick();renderRecords()});renderTimer();renderRecords();
+})();
+</script>
+</body>
+</html>
