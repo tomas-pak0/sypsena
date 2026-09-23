@@ -9,7 +9,9 @@
 - ryto ir vakaro valymų registravimas;
 - pastarųjų 7 dienų istorija;
 - mėnesio ataskaita ir įpročio statistika;
+- PDF mėnesio ataskaita su statistika ir dienų lentele;
 - CSV eksportas į „Excel“ arba „Google Sheets“;
+- Android failų bendrinimas per „Capacitor Filesystem“ ir „Share“;
 - JSON atsarginės kopijos sukūrimas ir atkūrimas;
 - duomenų saugojimas įrenginio naršyklėje;
 - diegimas telefone kaip PWA programėlės;
@@ -47,6 +49,8 @@ Valymų istorija saugoma naršyklės `localStorage` atmintyje. Išvalius naršyk
 - JavaScript
 - Web App Manifest
 - Service Worker
+- Capacitor (Android)
+- Canvas pagrindu generuojamos PDF ataskaitos
 
 ## Autorius
 
