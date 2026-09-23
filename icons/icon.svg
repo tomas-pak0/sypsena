@@ -1,7 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
   <title id="title">Šypsena</title>
+  <desc id="description">Baltas dantis ir raudonas dantų šepetėlis juodame fone</desc>
   <rect width="512" height="512" rx="112" fill="#0b0b0d"/>
-  <circle cx="256" cy="256" r="184" fill="#ed3948"/>
-  <path fill="#fff" d="M170 151c26-19 56-12 86 0 30-12 60-19 86 0 38 28 34 92 18 139-18 54-47 114-78 91-13-10-8-61-26-61s-13 51-26 61c-31 23-60-37-78-91-16-47-20-111 18-139Z"/>
-  <path fill="#0b0b0d" d="M190 224c38 28 94 28 132 0 8-6 19 4 13 13-17 29-47 47-79 47s-62-18-79-47c-6-9 5-19 13-13Z"/>
+  <circle cx="256" cy="256" r="184" fill="#17171a" stroke="#ed3948" stroke-width="16"/>
+
+  <path fill="#ffffff" d="M174 128c24-18 53-9 82 5 29-14 58-23 82-5 37 27 33 87 18 133-16 50-43 113-76 110-25-2-9-78-24-78s1 76-24 78c-33 3-60-60-76-110-15-46-19-106 18-133Z"/>
+  <path d="M190 151c19-10 42-2 66 10" fill="none" stroke="#d9d9dd" stroke-width="12" stroke-linecap="round"/>
+
+  <g transform="rotate(-18 270 335)">
+    <rect x="88" y="326" width="294" height="48" rx="24" fill="#ed3948"/>
+    <rect x="344" y="300" width="94" height="62" rx="16" fill="#ed3948"/>
+    <rect x="358" y="267" width="12" height="38" rx="6" fill="#ffffff"/>
+    <rect x="379" y="261" width="12" height="44" rx="6" fill="#ffffff"/>
+    <rect x="400" y="267" width="12" height="38" rx="6" fill="#ffffff"/>
+    <rect x="421" y="274" width="12" height="31" rx="6" fill="#ffffff"/>
+    <circle cx="123" cy="350" r="8" fill="#ffffff" opacity=".92"/>
+  </g>
 </svg>
