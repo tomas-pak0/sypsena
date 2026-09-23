@@ -1,0 +1,29 @@
+{
+  "name": "sypsena",
+  "version": "1.0.0",
+  "description": "„Šypsena“ – telefonui pritaikyta dantų valymo programėlė lietuvių kalba.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomas-pak0/sypsena.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomas-pak0/sypsena/issues"
+  },
+  "homepage": "https://github.com/tomas-pak0/sypsena#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/filesystem": "^8.1.3",
+    "@capacitor/share": "^8.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2"
+  }
+}

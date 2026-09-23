@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Šypsena</string>
+    <string name="title_activity_main">Šypsena</string>
+    <string name="package_name">lt.tyliaitpk.sypsena</string>
+    <string name="custom_url_scheme">lt.tyliaitpk.sypsena</string>
+</resources>
