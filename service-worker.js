@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sypsena-pwa-v2';
+const CACHE_NAME = 'sypsena-pwa-v3';
 const APP_FILES = [
   './',
   './index.html',
@@ -7,7 +7,8 @@ const APP_FILES = [
   './icons/icon-180.png',
   './icons/icon-192.png',
   './icons/icon-512.png',
-  './icons/icon-maskable-512.png'
+  './icons/icon-maskable-512.png',
+  './icons/icon-1024.png'
 ];
 
 self.addEventListener('install', event => {
