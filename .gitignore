@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Generated web bundle
+www/
+
+# Android local and build files
+android/.gradle/
+android/.idea/
+android/local.properties
+android/**/build/
