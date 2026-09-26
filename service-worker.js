@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sypsena-pwa-v8';
+const CACHE_NAME = 'sypsena-pwa-v9';
 const APP_FILES = [
   './',
   './index.html',
