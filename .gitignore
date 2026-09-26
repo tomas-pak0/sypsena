@@ -9,6 +9,7 @@ npm-debug.log*
 www/
 
 # Android local and build files
+android/.kotlin/
 android/.gradle/
 android/.idea/
 android/local.properties
