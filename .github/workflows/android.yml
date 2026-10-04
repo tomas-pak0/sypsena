@@ -40,3 +40,4 @@ jobs:
             android/app/build/outputs/bundle/release/*.aab
             android/app/build/reports/lint-results-release.html
             sypsena-screen.png
+            Play-Screenshot-*.png
