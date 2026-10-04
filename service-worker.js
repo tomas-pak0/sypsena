@@ -1,7 +1,9 @@
-const CACHE_NAME = 'sypsena-pwa-v11';
+const CACHE_NAME = 'sypsena-pwa-v130';
 const APP_FILES = [
   './',
   './index.html',
+  './translations.js',
+  './privacy.html',
   './manifest.webmanifest',
   './icons/icon.svg',
   './icons/icon-180.png',
