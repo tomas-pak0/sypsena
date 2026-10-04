@@ -1,7 +1,7 @@
 name: Android release
 on:
   push:
-    branches: [main]
+    branches: [main, work/sypsena-1.3.0]
   workflow_dispatch:
 permissions:
   contents: read
